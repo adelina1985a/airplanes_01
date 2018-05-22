@@ -9,7 +9,7 @@ public class Grid {
 	};
 
 	private Object[][] grid;
-	public static int size = 10;
+	public static int size = Config.gridSize;
 	public final int maxNoOfPlanes = 3;
 	public final int planeSize = 8;// 1 for head, 3 for body, 4 for wings
 	private int noOfPlanes;

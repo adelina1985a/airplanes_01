@@ -11,6 +11,7 @@ public class Config {
 	static String[] playerPlanes;
 	static String[] aiPlanes;
 	static boolean skipPlayerInput;
+	static int gridSize;
 
 	static {
 		InputStream input = null;
@@ -36,18 +37,22 @@ public class Config {
 	 * @param key
 	 * @return value for specified <b>key</b>, or <b>null</b> if empty property
 	 */
-	public static String getProp(String key) {
+	public String getProp(String key) {
 		String s = prop.getProperty(key);
 		return s.length() != 0 ? s : null;
 	}
 
-	public static String[] getPropList(String key) {
+	public String[] getPropList(String key) {
 		String s = prop.getProperty(key);
 		return s.length() != 0 ? s.split(",") : null;
 	}
 	
-	public static boolean getPropBool(String key){
+	public boolean getPropBool(String key){
 		return prop.getProperty(key).equals("" + true) ? true : false;
+	}
+	
+	public int getPropInt(String key) {
+	  return Integer.valueOf(prop.getProperty(key));
 	}
 
 	public Config() {
@@ -57,5 +62,6 @@ public class Config {
 			aiPlanes = getPropList("aiPlanes");
 			skipPlayerInput = getPropBool("skipPlayerInput");
 		}
+		gridSize = getPropInt("gridSize");
 	}
 }
